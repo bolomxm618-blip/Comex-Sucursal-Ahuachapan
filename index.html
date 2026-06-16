@@ -1163,7 +1163,7 @@ body{
     .comex-trust-strip{ grid-template-columns:1fr; }
     .popular-colors{ grid-template-columns:repeat(2,1fr); }
     .before-after-card{ grid-template-columns:1fr; }
-    .products-grid{ grid-template-columns:1fr; }
+    .products-grid{ grid-template-columns:repeat(2, minmax(0, 1fr)); gap:12px; }
 }
 
 
@@ -1722,6 +1722,72 @@ body{
 .product-card img,
 .product-card h3{ pointer-events: none !important; }
 .btn-add-cart{ cursor: pointer !important; pointer-events: auto !important; }
+
+
+
+/* ===== ARREGLO CELULAR: 2 PRODUCTOS POR FILA ===== */
+@media (max-width: 768px){
+    .products-section{
+        padding: 25px 12px;
+    }
+
+    .products-grid{
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+    }
+
+    .product-card{
+        min-height: 235px;
+        padding: 12px 9px;
+        border-radius: 18px;
+    }
+
+    .product-card::before{
+        height: 82px;
+    }
+
+    .product-card img{
+        max-width: 112px;
+        height: 112px;
+        padding: 7px;
+        border-radius: 18px;
+        margin-bottom: 8px;
+    }
+
+    .product-card h3{
+        font-size: 12px;
+        min-height: 34px;
+        margin-bottom: 10px;
+        line-height: 1.25;
+    }
+
+    .btn-add-cart{
+        font-size: 10px;
+        padding: 10px 6px;
+        opacity: 1;
+        border-radius: 999px;
+    }
+}
+
+@media (max-width: 360px){
+    .products-grid{
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 9px !important;
+    }
+
+    .product-card{
+        padding: 10px 7px;
+    }
+
+    .product-card img{
+        max-width: 96px;
+        height: 96px;
+    }
+
+    .btn-add-cart{
+        font-size: 9px;
+    }
+}
 
 </style>
 </head>
