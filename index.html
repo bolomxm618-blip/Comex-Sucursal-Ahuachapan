@@ -663,7 +663,9 @@ gap:20px;
 
 
 /* --- MODAL / DETALLE DEL PRODUCTO --- */
-.product-card { cursor: pointer; }
+.product-card { cursor: default; }
+.product-card img, .product-card h3 { pointer-events: none; }
+.btn-add-cart { cursor: pointer; pointer-events: auto; }
 .product-detail-modal {
     display: none;
     position: fixed;
@@ -1713,6 +1715,14 @@ body{
 .admin-stock-row input{width:auto!important;}
 .admin-badge.agotado{background:#ffecec;color:#d9534f;}
 
+
+
+/* ===== ARREGLO FINAL CELULAR: SOLO EL BOTÓN ABRE DETALLE ===== */
+.product-card{ cursor: default !important; }
+.product-card img,
+.product-card h3{ pointer-events: none !important; }
+.btn-add-cart{ cursor: pointer !important; pointer-events: auto !important; }
+
 </style>
 </head>
 <body>
@@ -2623,10 +2633,10 @@ function cambiarCantidadCarrito(index, cambio) {
         productDetailModal.classList.add('active');
     }
 
+    // ARREGLO: la tarjeta/imagen ya NO abre nada.
+    // Solo el botón "Agregar al carrito" abre la pantalla de detalle antes de agregar.
     productCards.forEach(card => {
-        card.addEventListener('click', function() {
-            abrirDetalleProducto(this);
-        });
+        card.style.cursor = 'default';
     });
 
     addButtons.forEach(btn => {
@@ -2863,10 +2873,10 @@ Tirros: [
     const tabsComex = document.querySelectorAll('.tab-item');
 
     function activarEventosProductosComex() {
+        // ARREGLO: al tocar la imagen o la tarjeta no pasa nada.
+        // Solo el botón abre el detalle del producto.
         document.querySelectorAll('.product-card').forEach(card => {
-            card.addEventListener('click', function() {
-                abrirDetalleProducto(this);
-            });
+            card.style.cursor = 'default';
         });
 
         document.querySelectorAll('.btn-add-cart').forEach(btn => {
